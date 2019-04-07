@@ -1,0 +1,159 @@
+<?php 
+        //Connexion à DB
+        mysql_connect("localhost","root","") or die("Erreur");
+        mysql_select_db("certifwebn1") or die("Base de données introuvable");
+         if ($_REQUEST){
+                $n = $_REQUEST['nom'];   
+                $p = $_REQUEST['prénom'];
+                $nt=$_REQUEST['numtel'];  
+                $g = $_REQUEST['genre']; 
+                $e = $_REQUEST['email']; 
+                $nc = $_REQUEST['numcin']; 
+                $d = $_REQUEST['datedenaissance']; 
+                $na = $_REQUEST['nationalité']; 
+                $i = $_REQUEST['interets']; 
+                $mdp = $_REQUEST['mdp']; 
+                $cmdp = $_REQUEST['cmdp']; 
+                if (!empty($nom) AND !empty($prénom) AND !empty($numtel) AND !empty($genre) AND !empty($email) AND !empty($numcin) AND !empty($datedenaissance) AND !empty($nationalité) AND !empty($interets) AND !empty($mdp) AND !empty($cmdp)){
+                        mysql_query("INSERT INTO inscription(nom,prénom,numtel,genre,email,numcin,datedenaissance,nationalité,interets,mdp,cmdp) VALUES (null,'$n','$p','$nt','$g','$e','$nc','$d','$na','$i','$mdp','$cmdp')") or die('Erreur: '.mysql_error());
+
+        
+                }else echo "Erreur";
+        
+         }
+        ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Inscription</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/inscription.css">
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body background="images/bg.jpg">
+        
+        <div class="container-fluid">
+                <div class="container">
+                        <div class="row">
+                           <div class="vertical-center-row">
+                                   <div class="vertical-align">
+
+        <article class="col-xs-5 col-md-8 col-md-4 col-lg-4">
+           <img src="../TP/images/logo.jpg" alt="LOGO" style="width:140px; height:60px"/> 
+        </article>
+
+        <center>
+        <a href="connexion.html" target="_BLANK"> 
+            <button  class="btn btn-warning" type="button">
+                Connexion
+            </button>
+        </a> 
+
+        <a href="index.html" target="_BLANK">
+            <button  class="btn btn-warning" type="button">
+                Home
+            </button>
+        </a> <br/> <br/>
+
+        </center>
+
+
+        <form method="GET" action="">
+                <div class="form-group">
+                        Nom:
+                        <input name="nom" type="text" class="form-control"/>
+                </div>
+                
+                <div class="form-group">
+                        Prénom:
+                        <input name="prenom" type="text" class="form-control"/>
+                </div>
+                
+                <div class="form-group">
+                        N° téléphone:
+                        <input name="numtel" type="number" class="form-control"/>
+                </div>
+                
+                <div class="form-group">
+                        Genre:
+                        <input name="genre" type="radio" class="form-control" value="h"/>
+                        Homme
+                        <input name="genre" type="radio" class="form-control value="f"/>
+                        Femme
+                        <input name="genre" type="radio" class="form-control" value="a"/>
+                        Autre
+                </div>
+                <div>
+                <label for="exampleInputEmail1">E-mail</label>
+                        <input name="email" type="email" class="form-control" id="exampleInputEmail1" placeholder="email@example.com">
+                </div>
+                <div class="form-group">
+                       N° CIN:
+                        <input name="numcin" type="number" class="form-control"/>
+                </div>
+                <div class="form-group">
+                        Date de naissance:
+                        <input name="datedenaissance" type="date" class="form-control"/>
+                </div>
+            
+                <div class="form-group">
+                        Nationalité:
+                        
+                <select name="nationalité">
+                  <option value="Tunisie"> Tunisie </option>
+                  <option value="Algerie" > Algerie </option>
+                  <option value="Marroc"> Marroc </option>
+                  <option value="Egypte">  Egypte  </option>
+                  <option value="France">  France  </option>
+                  <option value="Espagne">   Espagne </option> 
+                  <option value="Allemagne"> Allemagne </option>
+                  <option value="Italie">    Italie </option>
+                  <option value="Amerique"> Amerique  </option>
+                  <option value="Mexique">   Mexique </option>
+                 <option value="Brazil">   Brazil </option>
+                </select>
+             </div>
+              
+             <div class="checkbox">
+                    <label>
+                         Intérêts:
+                            <input type="checkbox" name="interets"/> Sport <br/>
+                            <input type="checkbox" name="interets"/> Musique <br/>
+                            <input type="checkbox" name="interets"/> Dance <br/>
+                            <input type="checkbox" name="interets"/> Food <br/>
+                            <input type="checkbox" name="interets"/> Théâtre <br/>
+                            <input type="checkbox" name="interets"/> Dormir <br/>
+                    </label>
+                  </div>
+            
+                  <div class="form-group">
+                        
+                    <label for="exampleInputPassword1">Mot de passe</label>
+                    <input name="mdp" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                
+                  </div>
+                  
+                  <div class="form-group">
+                        
+                    <label for="exampleInputPassword1">Confirmation mot de passe:</label>
+                    <input name="cmdp" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                
+                  </div>
+
+
+                <input type="submit" value="Envoyer"  class="btn btn-warning" /> 
+                <input type="reset" value="Effacer"   class="btn btn-warning"/>
+        </form>
+    
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>
